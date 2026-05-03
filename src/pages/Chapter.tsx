@@ -29,11 +29,20 @@ export default function ChapterPage() {
         </p>
       )}
 
-      <p>{ch.intro}</p>
+      {ch.intro.split(/\n{2,}/).map((para, i) => {
+        const parts = para.split(/\*\*(.+?)\*\*/g);
+        return (
+          <p key={i}>
+            {parts.map((t, j) => (j % 2 === 1 ? <strong key={j}>{t}</strong> : <span key={j}>{t}</span>))}
+          </p>
+        );
+      })}
 
-      {ch.codes.map((c, i) => (
-        <CodeBlock key={i} code={c.code} language={c.lang} />
-      ))}
+      {ch.codes.map((c: any, i) => {
+        const lang = Array.isArray(c) ? c[0] : c.lang;
+        const code = Array.isArray(c) ? c[1] : c.code;
+        return <CodeBlock key={i} code={code} language={lang} />;
+      })}
 
       {ch.points.length > 0 && (
         <>
@@ -44,9 +53,11 @@ export default function ChapterPage() {
         </>
       )}
 
-      {ch.alerts.map((a, i) => (
-        <AlertBox key={i} type={a.type}>{a.content}</AlertBox>
-      ))}
+      {ch.alerts.map((a: any, i) => {
+        const type = Array.isArray(a) ? a[0] : a.type;
+        const content = Array.isArray(a) ? a[1] : a.content;
+        return <AlertBox key={i} type={type}>{content}</AlertBox>;
+      })}
 
       <nav className="mt-12 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
         {prev ? (
