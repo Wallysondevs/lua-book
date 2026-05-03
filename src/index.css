@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lua-blue: #000080;
+  --color-lua-blue-dark: #00005C;
+  --color-lua-blue-light: #4B6BFF;
+  --color-lua-moon: #F5F0E1;
+  --color-lua-accent: #6B7FFF;
+  --color-lua-yellow: #FFD700;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: #f4f6fb;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+}
+.dark body { background: #0a0a23; color: #e2e8f0; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+.dark ::-webkit-scrollbar-thumb { background: #1e1e4a; }
+
+.prose-py p { margin: 0.75rem 0; line-height: 1.7; }
+.prose-py h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--color-lua-blue); }
+.dark .prose-py h2 { color: var(--color-lua-blue-light); }
+.prose-py h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose-py ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
+.prose-py ul li { margin: 0.35rem 0; }
+.prose-py code:not(pre code) {
+  background: #e6e9ff; color: var(--color-lua-blue); padding: 0.1rem 0.35rem;
+  border-radius: 4px; font-family: var(--font-mono); font-size: 0.9em;
+}
+.dark .prose-py code:not(pre code) { background: #1a1a4a; color: var(--color-lua-blue-light); }
